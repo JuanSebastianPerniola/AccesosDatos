@@ -7,13 +7,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-
 // Entidad de mi Producto
 @Entity
-//Tabla
+// Tabla
 @Table(name = "producto")
 public class Producto {
-    // ID 
+    // ID
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -48,14 +47,6 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
     public Integer getPrecio() {
         return precio;
     }
@@ -71,5 +62,13 @@ public class Producto {
     public void setCantidad(double cantidad) {
         this.cantidad = cantidad;
     }
-    
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
 }
