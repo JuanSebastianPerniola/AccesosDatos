@@ -17,7 +17,7 @@ public class ProductoService {
      * 
      * @return List<Producto> lista de productos
      */
-    public List<Producto> ListarTodosLosProducots() {
+    public List<Producto> ListarTodosLosProductos() {
         return productoManagement.findAll();
     }
 
@@ -31,7 +31,7 @@ public class ProductoService {
     /*
      * 
      */
-    public Producto GuardarProducio(Producto producto){
+    public Producto GuardarProducto(Producto producto){
         return productoManagement.save(producto);
     }
 
@@ -42,8 +42,8 @@ public class ProductoService {
         return productoManagement.findById(id).map(newProducto -> {
             newProducto.setNombre(producto.getNombre());
             newProducto.setPrecio(producto.getPrecio());
-            newProducto.setCantidad(producto.getCantidad());
-            newProducto.setDescripcion(producto.getDescripcion());
+            // newProducto.setCantidad(producto.getCantidad());
+            newProducto.setdescription(producto.getdescription());
             return productoManagement.save(newProducto);
         }).orElse(null);
     }

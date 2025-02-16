@@ -1,36 +1,25 @@
 package com.example.demo;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-// Entidad de mi Producto
 @Entity
-// Tabla
-@Table(name = "producto")
+@Table(name = "Producto")
 public class Producto {
-    // ID
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    // Nombre de tabla 1 => nombre
-    @Column(nullable = false)
+
     private String nombre;
-
-    // Nombre de tabla 2 => descp
-    private String descripcion;
-
-    // Nombre de tabla 3 => precio
-    @Column(nullable = false)
+    private String description;
     private Integer precio;
+    private Integer  cantidad;
 
-    // Nombre de tabla 4 => cantidad
-    @Column(nullable = false)
-    private double cantidad;
-
+    // Getters y Setters
     public Integer getId() {
         return id;
     }
@@ -47,6 +36,14 @@ public class Producto {
         this.nombre = nombre;
     }
 
+    public String getdescription() {
+        return description;
+    }
+
+    public void setdescription(String description) {
+        this.description = description;
+    }
+
     public Integer getPrecio() {
         return precio;
     }
@@ -55,20 +52,11 @@ public class Producto {
         this.precio = precio;
     }
 
-    public double getCantidad() {
-        return cantidad;
-    }
+    // public Integer  getCantidad() {
+    //     return cantidad;
+    // }
 
-    public void setCantidad(double cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
+    // public void setCantidad(Integer  cantidad) {
+    //     this.cantidad = cantidad;
+    // }
 }

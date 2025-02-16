@@ -9,41 +9,40 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
-
 
 @RestController
 @RequestMapping("/producto")
 public class ProductoController {
     @Autowired
-    private ProductoService productoService;   
+    private ProductoService productoService;
 
     @GetMapping
-    public List<Producto> ListarTodosLosProductos(){
-        return productoService.ListarTodosLosProducots();
+    public List<Producto> ListarTodosLosProductos() {
+        return productoService.ListarTodosLosProductos();
     }
-    
-    @PostMapping("/{id}")
-    public ResponseEntity<Producto> GetProductById(@RequestParam Integer id){
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Producto> GetProductById(@PathVariable Integer id) {
         return ResponseEntity.ok(productoService.GetProductById(id));
     }
 
-    @PostMapping("path")
-    public Producto GuardarProducio(@RequestBody Producto producte) {
-        return productoService.GuardarProducio(producte);
+    @PostMapping
+    public Producto GuardarProducto(@RequestBody Producto producto) {
+        return productoService.GuardarProducto(producto);
     }
-     @PutMapping("/{id}")
-    public ResponseEntity<Producto> UpdateProducto(@PathVariable Integer id, @RequestBody Producto ProductoDetails) {
-        Producto updatedProducto = productoService.UpdateProducto(id, ProductoDetails);
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Producto> UpdateProducto(@PathVariable Integer id, @RequestBody Producto productoDetails) {
+        Producto updatedProducto = productoService.UpdateProducto(id, productoDetails);
         return updatedProducto != null ? ResponseEntity.ok(updatedProducto) : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProducto(@PathVariable Integer id) {
-        return productoService.EliminarProducto(id) ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+        return productoService.EliminarProducto(id) ? ResponseEntity.noContent().build()
+                : ResponseEntity.notFound().build();
     }
 }
