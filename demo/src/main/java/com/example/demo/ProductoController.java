@@ -24,23 +24,23 @@ public class ProductoController {
         return productoService.ListarTodosLosProductos();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("Mirar/{id}")
     public ResponseEntity<Producto> GetProductById(@PathVariable Integer id) {
         return ResponseEntity.ok(productoService.GetProductById(id));
     }
 
-    @PostMapping
+    @PostMapping("/guardar")
     public Producto GuardarProducto(@RequestBody Producto producto) {
         return productoService.GuardarProducto(producto);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/Update/{id}")
     public ResponseEntity<Producto> UpdateProducto(@PathVariable Integer id, @RequestBody Producto productoDetails) {
         Producto updatedProducto = productoService.UpdateProducto(id, productoDetails);
         return updatedProducto != null ? ResponseEntity.ok(updatedProducto) : ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/Delete/{id}")
     public ResponseEntity<Void> deleteProducto(@PathVariable Integer id) {
         return productoService.EliminarProducto(id) ? ResponseEntity.noContent().build()
                 : ResponseEntity.notFound().build();
